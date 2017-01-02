@@ -14,3 +14,4 @@ export function fetchPosts() {
     payload: request
   }
 }
+// ^ when and where will this action be called?? want it in root route...

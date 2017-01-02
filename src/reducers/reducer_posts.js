@@ -7,15 +7,18 @@
 import { FETCH_POSTS } from '../actions/index';
 // need to import the action we just created
 
-// all -> list of blog posts in array form
-// post -> active individual post (show action)
+// 2 pieces of APP STATE:
+  // all -> list of blog posts in array form
+  // post -> active individual post (show action)
 const INITIAL_STATE = { all: [], post: null };
 
 // reducer function w/ switch statement for all diff types of actions
+// remember: via redux-promise, data will be available on action.payload.data
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case FETCH_POSTS:
-
+      // return new obj, with current state + new payload (of fetched posts) tacked on...
+      return { ...state, all: action.payload.data };
     default:
       return state;
   }

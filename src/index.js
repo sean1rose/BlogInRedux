@@ -19,8 +19,11 @@ import { Router, browserHistory } from 'react-router';
     // whenever anything after ".com/" changes
 // hashistory -> then anything after "#" e.g. http://www.blog.com/#posts/5
 
-// ***need to tell react router what url forms are valid and what components to show for each of them
-  // config router to tell it what are the valid urls and what to show for each one
+// ***React-router Config:
+  // config router to tell it what are the valid urls and what components to show for each one
+  // ---> ***DONE in routes.js, which is imported below***
+  import routes from './routes';
+  // ^ feed routing mapping into the wrapper -> will be routes attribute on Router component...
   
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
@@ -31,6 +34,6 @@ ReactDOM.render(
       <App /> 
         ^ Replacing App Component w/ Router, which passes off control of rendering application to our router
   */}
-    <Router history={browserHistory} />
+    <Router history={browserHistory} routes={routes} />
   </Provider>
   , document.querySelector('.container'));

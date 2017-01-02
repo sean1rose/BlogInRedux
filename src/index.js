@@ -22,11 +22,13 @@ import { Router, browserHistory } from 'react-router';
 // ***React-router Config:
   // config router to tell it what are the valid urls and what components to show for each one
   // ---> ***DONE in routes.js, which is imported below***
-  import routes from './routes';
+import routes from './routes';
   // ^ feed routing mapping into the wrapper -> will be routes attribute on Router component...
-  
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+import promise from 'redux-promise';
+// ^ ensures that all of our actions flow thru promise middleware b4 hitting our reducers
+  
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

@@ -14,4 +14,9 @@ export function fetchPosts() {
     payload: request
   }
 }
-// ^ when and where will this action be called?? want it in root route...
+// ^ when and where will this action be called?? when do we want to fetch our data? want it in root route...
+  // https://www.udemy.com/react-redux/learn/v4/t/lecture/4419866
+  // w/ our weather app -> user would click search button (a very distinct event) to call the action creator of fetching app data
+  // our current app -> want to fetch data soon as we navigate to PostsIndex component
+    // need to fetch data whenever url changes...
+      // ***so use the REACT LIFECYCLE METHOD -> COMPONENTWILLMOUNT***

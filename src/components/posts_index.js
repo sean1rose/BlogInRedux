@@ -6,17 +6,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchPosts } from '../actions/index';
+import { Link } from 'react-router';
+// ^ is an actual react component that becomes an <a> tag, that will link to the new route...
 
 class PostsIndex extends Component {
   // calls this lifecycle method whenever component is about to be rendered to the DOM (only called once) -> perfect place to call fetch data action creator
   componentWillMount() {
-    // want to call fetchPosts action creator here, so need to promote this from a component to a redux container
+    // want to call fetchPosts action creator here to get all posts data, so need to promote this from a component to a redux container
     this.props.fetchPosts();
   }
 
   render() {
     return (
-      <div>List of blog posts</div>
+      <div>
+        <div className="text-xs-right">
+          <Link to="/posts/new" className="btn btn-primary">
+            Add a Post
+          </Link>
+        </div>
+        List of blog posts
+      </div>
+
     )
   }
 }

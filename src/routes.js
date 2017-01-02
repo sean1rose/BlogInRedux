@@ -12,7 +12,7 @@ import App from './components/app';
 // ^ our initial component that we were rendering before
 
 import PostsIndex from './components/posts_index';
-
+import PostsNew from './components/posts_new';
 
 // *** Greeting as child route EXAMPLE:
 
@@ -49,5 +49,18 @@ export default (
 export default (
   <Route path="/" component={App} >
     <IndexRoute component={PostsIndex} />
+    <Route path="posts/new" component={PostsNew} />
   </Route>
 )
+
+// ***5 step process to implement creating new post feature (using a FORM) ... ('/posts/new'). This process goes for creating any new feature using react-router***
+/*
+  1. scaffold out component used to show the form (posts/new component)
+    a) create new file in components directory
+  2. add component to routes file as a new url that user can navigate to (cuz want user to be able to see component whenever naviate to 'posts/new')
+    a) need to define a new route-mapping in our router
+  3. implement a button in posts_index component that allows user to navigate to the create form (Add Post button on index page)
+    a) use React-router's Link component in posts_index file
+  4. add actual form to posts/new component (whenever user submits the form, calls an action creator that makes a POST request to save the blog post)
+  5. create the action creator and update the reducer
+*/

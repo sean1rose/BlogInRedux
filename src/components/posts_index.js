@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchPosts } from '../actions/index';
 import { Link } from 'react-router';
-// ^ is an actual react component that becomes an <a> tag, that will link to the new route...
+// ^ is an actual react component that is an actual <a> tag, that will link to the new route...
 
 class PostsIndex extends Component {
   // calls this lifecycle method whenever component is about to be rendered to the DOM (only called once) -> perfect place to call fetch data action creator

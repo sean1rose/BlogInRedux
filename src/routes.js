@@ -63,5 +63,6 @@ export default (
     a) use React-router's Link component in posts_index file. Route is set up in routes.js but button Link component is in posts_index component.
   4. add actual form to posts/new component (whenever user submits the form, calls an action creator that makes a POST request to save the blog post). Include form validation.
     a) use redux-form library - 1) hook formReducer as part of rootReducer. 2) config form in the form component using 'reduxForm' obj. 3) build out actual form user is working with
+      4) wire up reduxForm config with individual inputs w/in our form using props-helpers (just like connect) -> this.props.handleSubmit
   5. create the action creator and update the reducer
 */

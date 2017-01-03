@@ -10,6 +10,9 @@ import { reduxForm } from 'redux-form';
 import { createPost } from '../actions/index';
 // post request action creator
 
+import { Link } from 'react-router'
+// to implement cancel button
+
 class PostsNew extends Component {
   render() {
     // CONFIG OBJECTS (provide a bunch of handler functions): 
@@ -46,6 +49,7 @@ class PostsNew extends Component {
         </div>
 
         <button type="submit" className="btn btn-primary">Submit</button>
+        <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
     )
   }

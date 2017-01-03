@@ -4,18 +4,20 @@
     // single blog post -> only one that shows actual content so...
       // ***gonna need state for active single post vs state for all posts
 
-import { FETCH_POSTS } from '../actions/index';
+import { FETCH_POSTS, FETCH_POST } from '../actions/index';
 // need to import the action we just created
 
 // 2 pieces of APP STATE:
   // all -> list of blog posts in array form
-  // post -> active individual post (show action)
+  // post -> active individual post (show action) -> used with FETCH_POST
 const INITIAL_STATE = { all: [], post: null };
 
 // reducer function w/ switch statement for all diff types of actions
 // remember: via redux-promise, data will be available on action.payload.data
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
+    case FETCH_POST:
+      return { ...state, post: action.payload.data };
     case FETCH_POSTS:
       // return new obj, with current state + new payload (of fetched posts) tacked on...
       return { ...state, all: action.payload.data };

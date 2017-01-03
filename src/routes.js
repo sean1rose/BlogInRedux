@@ -14,6 +14,8 @@ import App from './components/app';
 import PostsIndex from './components/posts_index';
 import PostsNew from './components/posts_new';
 
+import PostsShow from './components/posts_show';
+
 // *** Greeting as child route EXAMPLE:
 
 // const Greeting = () => {
@@ -50,6 +52,7 @@ export default (
   <Route path="/" component={App} >
     <IndexRoute component={PostsIndex} />
     <Route path="posts/new" component={PostsNew} />
+    <Route path="posts/:id" component={PostsShow} />
   </Route>
 )
 
@@ -67,8 +70,26 @@ export default (
       5) create action creator in actions index file 6) pass in action creator into handleSubmit on onSubmit event handler (need an action creator that takes in form properties to pass onto the backend)
       6a. pass in action creator into handleSubmit func (redux-form will validate inputs and then call action creator w/ passed in data)
       6b. do 6a by using reduxForm rather than connect to inject action creator into component (both have same behavior - can be used to inject actionCreators into our component; diff is that reduxForm has 1 additional argument [the config obj])
-      // connect: first arg is mapStateToProps, 2nd is mapDispatchToProps
-      // reduxForm: 1st is form config, 2nd is mapStateToProps, 3rd is mapDispatchToProps
-        // in our example below, no 2nd arg (it's null - mapStateToProps isn't necessary), 3rd arg is just the createPost actionCreator
+        // connect: first arg is mapStateToProps, 2nd is mapDispatchToProps
+        // reduxForm: 1st is form config, 2nd is mapStateToProps, 3rd is mapDispatchToProps
+          // in our example below, no 2nd arg (it's null - mapStateToProps isn't necessary), 3rd arg is just the createPost actionCreator
+          // 6c. insert this.props.createPost into handleSubmit
+      // when the form is submitted, handleSubmit is called w/ the contents of the form. If form is valid -> it calls actionCreator w/ contents of the form. Object goes into actionCreator as props -> then posted to the backend
+      7. validate form (add validate fun to reduxForm config obj; add property to errors object in validate func; use jsx to show error inside of render method - to show invalidation)
+      8. want to navigate user back to index view after clicking submit (w/o using Link), we need react-router
+        use react-router's push method
+        gain access to react-router by defining contextTypes property on the class
+        then extract out submission action into separate helper function called onSubmit, 
+        we called action creator (createPost), then chain onto that (using then) the calling of our router w/ the path to push to (this.context.router.push('/'))
   5. create the action creator and update the reducer
 */
+
+
+// ***Also want to create a new route for clicking on an listed item/blog entry on posts_index page
+  // using params
+  // <Route path="posts/:id" component={PostsShow} />
+  // ->  this.props.params.id
+// also create the new posts_show component
+// going to use params to make sure we fetch the correct post id
+// add Link to post params in posts_index component
+  // <Link to={"posts/" + post.id}>

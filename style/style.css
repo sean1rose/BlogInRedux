@@ -5,3 +5,11 @@ form a {
 .text-help {
   color: #d9534f;
 }
+
+.list-group-item {
+  display: flex;
+}
+
+.post-title {
+  flex: 1;
+}

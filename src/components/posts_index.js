@@ -15,6 +15,23 @@ class PostsIndex extends Component {
     // want to call fetchPosts action creator here to get all posts data, so need to promote this from a component to a redux container
     this.props.fetchPosts();
   }
+  // need to render ^ these fetched posts via mapStateToProps
+    // https://www.udemy.com/react-redux/learn/v4/t/lecture/4419898
+
+  // helper func to help build our list
+  renderPosts() {
+    //list of posts is available as an array (this.props.posts)
+    // available cuz of mapStateToProps, which makes posts available on this.props
+    return this.props.posts.map((post) => {
+      return (
+        <li className="list-group-item" key={post.id}>
+          <strong className="post-title">{post.title}</strong>
+          <span className="float-xs-right">{post.categories}</span>
+        </li>
+      )
+    })
+  }
+
 
   render() {
     return (
@@ -24,16 +41,24 @@ class PostsIndex extends Component {
             Add a Post
           </Link>
         </div>
-        List of blog posts
+        <h3>Posts</h3>
+        <ul className="list-group">
+          {this.renderPosts()}
+        </ul>
       </div>
 
     )
   }
 }
 
+function mapStateToProps(state) {
+  // posts are available on state
+  return { posts: state.posts.all };
+}
+
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({ fetchPosts }, dispatch);
 // }
 // ^ instead of binding action creators, use shortcut of obj w/ fetchPosts so don't need boilerplate of mapDispatchToProps...
-export default connect(null, { fetchPosts })(PostsIndex);
+export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
 // ^^ last 2 steps of connecting mapDispatchToProps to the component thus allows us to call fetchPosts action creator in the component

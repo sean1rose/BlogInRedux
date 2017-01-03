@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const CREATE_POST = 'CREATE_POST';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=sean';
@@ -20,3 +21,16 @@ export function fetchPosts() {
   // our current app -> want to fetch data soon as we navigate to PostsIndex component
     // need to fetch data whenever url changes...
       // ***so use the REACT LIFECYCLE METHOD -> COMPONENTWILLMOUNT***
+
+
+// this action creator is for submitting our redux form (passed in arguments containing object-field-properties)
+// want to eventually hand this action creator into handleSubmit function in posts_new redux-form 
+export function createPost(props) {
+  // pass props into post request as 2nd argument of axios.post()
+  const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, props);
+
+  return {
+    type: CREATE_POST,
+    payload: request
+  }
+}

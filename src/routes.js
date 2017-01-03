@@ -62,7 +62,13 @@ export default (
   3. implement a button in posts_index component that allows user to navigate to the create form (Add Post button on index page)
     a) use React-router's Link component in posts_index file. Route is set up in routes.js but button Link component is in posts_index component.
   4. add actual form to posts/new component (whenever user submits the form, calls an action creator that makes a POST request to save the blog post). Include form validation.
-    a) use redux-form library - 1) hook formReducer as part of rootReducer. 2) config form in the form component using 'reduxForm' obj. 3) build out actual form user is working with
+    STEPS TO IMPLEMENTING REDUX-FORM: - 1) hook formReducer as part of rootReducer. 2) config form in the form component using 'reduxForm' obj. 3) build out actual form user is working with
       4) wire up reduxForm config with individual inputs w/in our form using props-helpers (just like connect) -> this.props.handleSubmit
+      5) create action creator in actions index file 6) pass in action creator into handleSubmit on onSubmit event handler (need an action creator that takes in form properties to pass onto the backend)
+      6a. pass in action creator into handleSubmit func (redux-form will validate inputs and then call action creator w/ passed in data)
+      6b. do 6a by using reduxForm rather than connect to inject action creator into component (both have same behavior - can be used to inject actionCreators into our component; diff is that reduxForm has 1 additional argument [the config obj])
+      // connect: first arg is mapStateToProps, 2nd is mapDispatchToProps
+      // reduxForm: 1st is form config, 2nd is mapStateToProps, 3rd is mapDispatchToProps
+        // in our example below, no 2nd arg (it's null - mapStateToProps isn't necessary), 3rd arg is just the createPost actionCreator
   5. create the action creator and update the reducer
 */

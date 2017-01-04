@@ -36,7 +36,7 @@ export function createPost(props) {
   }
 }
 
-// action creator for ffetching a single post
+// action creator for fetching a single post
 export function fetchPost(id) {
   const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
   

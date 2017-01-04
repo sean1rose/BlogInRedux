@@ -11,8 +11,11 @@
   // import action creator in this file and inject it in the connect function
   // create UI button for delete action
   // need to call onClick action handler to call AC
+// 8. want to navigate user upon deleting of post
+  // grab access to router context using PropTypes
+  // upon deletePost call, chain a .then and use this.context.router.push(WHERE YOU WANT TO RE-ROUTE TO)
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchPost, deletePost } from '../actions/index';
 import { Link } from 'react-router';
@@ -22,6 +25,10 @@ import { Link } from 'react-router';
   // 2. then make sure to collect data for action creator in reducer
   // 3. make use of action creator upon render of this component (need to connect to store)
 class PostsShow extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   componentWillMount() {
     // pull id out of url, pass it to fetchPost, which makes the back-end request, resolves some data, reducer picks up resolved promise, then want to show it here
     this.props.fetchPost(this.props.params.id);
@@ -29,7 +36,11 @@ class PostsShow extends Component {
 
   onDeleteClick() {
     // onClick handler to call AC
-    this.props.deletePost(this.props.params.id);
+    this.props.deletePost(this.props.params.id)
+      .then(() => {
+        // navigate user back to index
+        this.context.router.push('/');
+      })
   }
   
   render() {

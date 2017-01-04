@@ -1,5 +1,7 @@
+//*** SHOWS HOW TO USE REDUX FORM****
+
+
 // Implementation of create new post form using redux-form...
-// HOW TO USE REDUX FORM
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 // ^ reduxForm obj is analogous to connect function from react-redux library -> use it to wrap PostsNew component
@@ -120,7 +122,7 @@ function validate(values) {
     // we called action creator (createPost), then chain onto that (using then) the calling of our router w/ the path to push to (this.context.router.push('/'))
 
 
-// pass in config to reduxForm
+// pass in REDUX FORM CONFIGURATION
   // here's what the form is gonna be called
   // here's the fields that you're going to be in charge of
 export default reduxForm({

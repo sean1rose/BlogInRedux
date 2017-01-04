@@ -26,7 +26,8 @@ import PostsShow from './components/posts_show';
 // 1st route: Home directory
 // path -> urls/routes in our app
 // *note: want to make sure that single App component is the root container of our app (allows us to easily add header or footer component)
-  // use IndexRoute -> helper that behaves liek a route, but it's shown whenever a url is matches a path defined by a parent but not 1 of the children
+  // always showing App component (core container) -> its job was to show children/nested components
+  // use IndexRoute -> helper that behaves like a route, but it's shown whenever a url is matches a path defined by a parent but not 1 of the children
     // so now, if the path is "/" -> show both App component and PostsIndex component
 /*
 export default (

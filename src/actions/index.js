@@ -1,3 +1,5 @@
+// Action creators for our HTTP requests (using redux-promise middleware)
+
 // define an action creator to grab our list of blog posts from our api
 import axios from 'axios';
 

@@ -8,7 +8,7 @@ import { FETCH_POSTS, FETCH_POST } from '../actions/index';
 // need to import the action we just created
 
 // 2 pieces of APP STATE:
-  // all -> list of blog posts in array form
+  // all -> list of blog posts in array form (no content property)
   // post -> active individual post (show action) -> used with FETCH_POST
 const INITIAL_STATE = { all: [], post: null };
 

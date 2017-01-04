@@ -11,6 +11,7 @@ import { Link } from 'react-router';
 
 class PostsIndex extends Component {
   // calls this lifecycle method whenever component is about to be rendered to the DOM (only called once) -> perfect place to call fetch data action creator
+  // loads data soon as rendering to the DOM
   componentWillMount() {
     // want to call fetchPosts action creator here to get all posts data, so need to promote this from a component to a redux container
     this.props.fetchPosts();
@@ -36,6 +37,7 @@ class PostsIndex extends Component {
     })
   }
   // note the use of LINK component above -> allows us to be able to click on a post and taken to that route params id for individual post id
+  // LINK tag is used just like any other component, but serves as an anchor tag
 
 
   render() {

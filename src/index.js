@@ -35,6 +35,7 @@ ReactDOM.render(
    {/*
       <App /> 
         ^ Replacing App Component w/ Router, which passes off control of rendering application to our router
+        Also pass in browserHistory object to use entire url to figure out where we are (could also use hashistory, which is similar)
   */}
     <Router history={browserHistory} routes={routes} />
   </Provider>

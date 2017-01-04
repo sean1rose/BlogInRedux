@@ -86,10 +86,10 @@ export default (
 
 
 // ***Also want to create a new route for clicking on an listed item/blog entry on posts_index page
-  // using params
+  // using PARAMS -> use :id to grab individual post
   // <Route path="posts/:id" component={PostsShow} />
-  // ->  this.props.params.id
+  // ->  this.props.PARAMS.id
 // also create the new posts_show component
 // going to use params to make sure we fetch the correct post id
 // add Link to post params in posts_index component
-  // <Link to={"posts/" + post.id}>
+  // <Link to={"posts/" + post.id}></Link>

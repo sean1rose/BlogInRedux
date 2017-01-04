@@ -35,6 +35,7 @@ class PostsIndex extends Component {
       )
     })
   }
+  // note the use of LINK component above -> allows us to be able to click on a post and taken to that route params id for individual post id
 
 
   render() {
